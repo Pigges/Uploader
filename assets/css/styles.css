@@ -1,0 +1,73 @@
+body {
+    background-color: #588d60;
+}
+* {
+    font-family: "Roboto Light";
+    box-sizing: border-box;
+}
+.container {
+    width: 80%;
+    max-width: 500px;
+    margin: 60px auto;
+}
+.container h1 {
+    text-align: center;
+    color: white;
+}
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 25px;
+}
+form .input-group {
+    margin-bottom: 15px;
+}
+form label {
+    display: block;
+    margin-bottom: 10px;
+}
+form input {
+    padding: 12px 20px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+.submit-btn {
+    width: 100%;
+    border: none;
+    background: #3EADEF;
+    font-size: 18px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#progress {
+    display: none;
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#progress-bar {
+    margin: 20px auto 0;
+    width: 100%;
+    height: 40px;
+}
+
+#uploaded {
+    display: none;
+}
+
+#files-list {
+    color: #fff;
+}
+
+#files-list .file-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}

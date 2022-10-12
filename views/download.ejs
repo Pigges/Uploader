@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Uploader</title>
+    <style><%- inline.style %></style>
+</head>
+<body>
+<div class="container">
+    <div id="files-list">
+        <h2>Files:</h2>
+        <% files.forEach(file => { %>
+            <div id="card-<%= file %>" class="file-card">
+                <a href="/download/<%= file%>"><%= file %></a>
+            </div>
+        <% }) %>
+    </div>
+</div>
+</body>
+</html>

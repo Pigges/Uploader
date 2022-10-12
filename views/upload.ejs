@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Uploader</title>
+    <style><%- inline.style %></style>
+</head>
+<body>
+<div class="container">
+    <h1>Uploader</h1>
+    <form id='form'>
+        <div class="input-group">
+            <label for='files'>Select file*</label>
+            <input id='files' type="file" multiple>
+        </div>
+        <div class="input-group">
+            <label for='name'>File name</label>
+            <input name='name' id='name' placeholder="Name your file" />
+        </div>
+        <button class="submit-btn" type='submit'>Upload</button>
+        <div id="progress">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <p id="progress-text"></p>
+        </div>
+        <div id="uploaded">
+            <p>Successfully uploaded: <a href="#" id="upload-name"></a></p>
+        </div>
+    </form>
+    <div id="files-list">
+        <h2>Existing files:</h2>
+            <% files.forEach(file => { %>
+                <div id="card-<%= file %>" class="file-card">
+                    <a href="/download/<%= file%>"><%= file %></a>
+                    <button id="file-<%= file %>" class="delete-button">DELETE</button>
+                </div>
+            <% }) %>
+    </div>
+</div>
+<script><%- inline.axios%></script>
+<script><%- inline.upload_js%></script>
+</body>
+</html>
