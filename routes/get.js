@@ -19,7 +19,7 @@ module.exports = (app)=>{
     })
 
     app.get('/download/:file', (req,res)=> {
-        if (checkFileExistsSync("./uploads/"+req.params.file)) {
+        if (fs.existsSync("./uploads/"+req.params.file)) {
             res.sendFile(path.resolve("./uploads/"+req.params.file))
         } else {
             res.render('not_found', {inline, file: req.params.file})
@@ -30,15 +30,4 @@ module.exports = (app)=>{
         res.status(404);
         res.redirect('/download')
     })
-}
-
-
-function checkFileExistsSync(filepath){
-    let flag = true;
-    try{
-        fs.accessSync(filepath, fs.constants.F_OK);
-    }catch(e){
-        flag = false;
-    }
-    return flag;
 }
