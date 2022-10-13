@@ -2,7 +2,7 @@ body {
     background-color: #588d60;
 }
 * {
-    font-family: "Roboto Light";
+    font-family: "Roboto Light", serif;
     box-sizing: border-box;
 }
 .container {
@@ -64,6 +64,7 @@ form input {
 }
 
 #files-list .file-card {
+    color: #000;
     display: flex;
     justify-content: space-between;
     background-color: #fff;

@@ -9,11 +9,6 @@ const inline = {
 
 module.exports = (app)=>{
     app.get('/upload', (req,res)=> {
-        const inline = {
-            style : fs.readFileSync('./assets/css/styles.css','utf8'),
-            axios: fs.readFileSync('./assets/js/axios.js'),
-            upload_js: fs.readFileSync('./assets/js/upload_script.js','utf8'),
-        };
         console.log(fs.readdirSync('./uploads').keys())
         res.render("upload", { inline, "files": fs.readdirSync('./uploads') })
         //res.render('index');
@@ -24,11 +19,26 @@ module.exports = (app)=>{
     })
 
     app.get('/download/:file', (req,res)=> {
-        res.sendFile(path.resolve("./uploads/"+req.params.file))
+        if (checkFileExistsSync("./uploads/"+req.params.file)) {
+            res.sendFile(path.resolve("./uploads/"+req.params.file))
+        } else {
+            res.render('not_found', {inline, file: req.params.file})
+        }
     })
 
     app.get('/*', (req, res)=> {
         res.status(404);
         res.redirect('/download')
     })
+}
+
+
+function checkFileExistsSync(filepath){
+    let flag = true;
+    try{
+        fs.accessSync(filepath, fs.constants.F_OK);
+    }catch(e){
+        flag = false;
+    }
+    return flag;
 }
