@@ -1,4 +1,5 @@
 const express = require('express');
+cookieParser = require('cookie-parser')
 const path = require('path');
 const PORT = process.env.PORT || 3000
 
@@ -10,6 +11,8 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}))
+
+app.use(cookieParser())
 
 app.use(express.json());
 

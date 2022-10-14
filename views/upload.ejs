@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Uploader</title>
     <style><%- inline.style %></style>
+    <script>function delete_cookie(name) { document.cookie = name +'=; Path=/;  Domain=' + location.host +  '; Expires=Thu, 01 Jan 1970 00:00:01 GMT; SameSite=None; Secure' }</script>
 </head>
 <body>
+<button onclick="axios('/upload/logout')">Logout</button>
 <div class="container">
     <h1>Uploader</h1>
     <form id='form'>

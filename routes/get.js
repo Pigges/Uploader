@@ -1,17 +1,19 @@
 const fs = require('fs');
 const path = require('path')
+const auth = require('./auth')
+const inline = require('./inline')
 
-const inline = {
-    style : fs.readFileSync('./assets/css/styles.css','utf8'),
-    axios: fs.readFileSync('./assets/js/axios.js'),
-    upload_js: fs.readFileSync('./assets/js/upload_script.js','utf8'),
-};
 
 module.exports = (app)=>{
-    app.get('/upload', (req,res)=> {
+    app.get('/upload', auth, (req,res)=> {
         console.log(fs.readdirSync('./uploads').keys())
         res.render("upload", { inline, "files": fs.readdirSync('./uploads') })
         //res.render('index');
+    })
+
+    app.get('/upload/logout', auth, (req,res)=>{
+        res.cookie('auth', '')
+        res.send('success')
     })
 
     app.get('/download', (req,res)=> {

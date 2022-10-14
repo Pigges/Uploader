@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Uploader</title>
+</head>
+<style><%- inline.style %></style>
+<body>
+<div class="container">
+    <h1>Login</h1>
+    <form action="/upload/login" method="post">
+        <% if (params.fail) {%>
+            <p>Failed to login</p>
+        <% } %>
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username">
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="text" name="password" id="password">
+        </div>
+        <button class="submit-btn">Login</button>
+    </form>
+</div>
+</body>
+</html>
